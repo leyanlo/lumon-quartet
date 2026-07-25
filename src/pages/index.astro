@@ -58,7 +58,7 @@ const members = [
 			<nav aria-label="Main navigation">
 				<a href="#story">Story</a>
 				<a href="#quartet">Quartet</a>
-				<a class="nav-cta" href="#contact">Contact</a>
+				<a class="nav-cta" href="#contact">Up next</a>
 			</nav>
 		</header>
 
@@ -122,20 +122,17 @@ const members = [
 			</section>
 
 			<section class="contact shell" id="contact" aria-labelledby="contact-title">
-				<div class="section-label dark"><span>04</span><span>Get in touch</span></div>
+				<div class="section-label dark"><span>04</span><span>Up next</span></div>
 				<div class="contact-grid">
 					<div>
-						<h2 id="contact-title">Let’s make<br />something <em>resonate.</em></h2>
-						<p>For performances, collaborations, or a friendly hello, send us a note.</p>
+						<h2 id="contact-title">The next<br /><em>movement.</em></h2>
+						<p>We’re shaping our first program now. Concert dates, recordings, and new portraits are coming soon.</p>
 					</div>
-					<form name="contact" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
-						<input type="hidden" name="form-name" value="contact" />
-						<p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
-						<label>Name<input type="text" name="name" autocomplete="name" required /></label>
-						<label>Email<input type="email" name="email" autocomplete="email" required /></label>
-						<label>Message<textarea name="message" rows="4" required></textarea></label>
-						<button type="submit">Send a note <span aria-hidden="true">↗</span></button>
-					</form>
+					<div class="contact-note">
+						<span>Rehearsing in the San Francisco Bay Area</span>
+						<p>Until then, the music is happening offstage.</p>
+						<a href="#top">Back to the beginning <span aria-hidden="true">↑</span></a>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -212,13 +209,11 @@ const members = [
 	.contact-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:12%;margin-top:80px}
 	.contact h2{font-size:clamp(62px,7vw,110px)}
 	.contact h2 em{color:#747870}.contact-grid>div>p{max-width:390px;margin:40px 0 0;color:#555a54}
-	form{display:flex;flex-direction:column;gap:22px;padding-top:10px}
-	form label{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.14em;color:#656961}
-	input,textarea{width:100%;display:block;background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:10px 0;color:var(--ink);outline:none;resize:vertical}
-	input:focus,textarea:focus{border-color:#659300;box-shadow:0 1px #659300}
-	button{border:0;border-radius:0;background:var(--acid);padding:18px 20px;display:flex;justify-content:space-between;text-transform:uppercase;font:11px 'DM Mono',monospace;letter-spacing:.12em;cursor:pointer;color:var(--ink);margin-top:8px;transition:.2s}
-	button:hover{background:var(--ink);color:var(--paper)}
-	.hidden{position:absolute;left:-9999px}
+	.contact-note{align-self:end;border-top:1px solid var(--ink);padding-top:18px}
+	.contact-note>span{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.14em;color:#656961}
+	.contact-note p{font-family:'Newsreader',serif;font-size:34px;line-height:1.15;letter-spacing:-.03em;margin:45px 0 65px;max-width:390px}
+	.contact-note a{background:var(--acid);padding:18px 20px;display:flex;justify-content:space-between;text-transform:uppercase;font:11px 'DM Mono',monospace;letter-spacing:.12em;transition:.2s}
+	.contact-note a:hover{background:var(--ink);color:var(--paper)}
 	footer{border-top:1px solid var(--ink);padding:30px 0 45px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
 	footer p{margin:0}footer p:nth-child(2){text-align:center}footer p:last-child{text-align:right}
 	@media(max-width:900px){
