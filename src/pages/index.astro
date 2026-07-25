@@ -1,14 +1,18 @@
 ---
 import { Image } from 'astro:assets';
 import groupSunsetPhoto from '../assets/media/group-sunset.jpg';
+import lynnGerberPhoto from '../assets/media/lynn-gerber.jpg';
 import stanfordLobbyPhoto from '../assets/media/stanford-lobby.jpg';
 import stanfordMedicinePhoto from '../assets/media/stanford-medicine.jpg';
+import stephanieWuPhoto from '../assets/media/stephanie-wu.jpg';
 
 const members = [
 	{
 		name: 'Lynn Gerber',
 		initials: 'LG',
 		label: 'Lumon Quartet',
+		photo: lynnGerberPhoto,
+		photoAlt: 'Lynn Gerber playing violin outdoors',
 		bio: 'A Bay Area violinist and concertmaster of the Stanford Medicine Orchestra, Lynn grew up studying at the San Francisco Conservatory of Music and with Geoff Nuttall of the St. Lawrence String Quartet. Away from the stand, she is an anesthesiologist and clinical instructor.',
 		source: 'https://med.stanford.edu/medicineandthemuse/events/StanfordMedicineMusicNetwork/orchestra.html',
 	},
@@ -16,6 +20,8 @@ const members = [
 		name: 'Leyan Lo',
 		initials: 'LL',
 		label: 'Lumon Quartet',
+		photo: null,
+		photoAlt: '',
 		bio: 'An avid chamber musician, Leyan has performed with friends across the Bay Area and at the St. Lawrence String Quartet Chamber Music Seminar. His other life is spent building technology—and occasionally solving a Rubik’s Cube very quickly.',
 		source: 'https://www.leyanlo.com/violin/',
 	},
@@ -23,6 +29,8 @@ const members = [
 		name: 'Tyson Mao',
 		initials: 'TM',
 		label: 'Lumon Quartet',
+		photo: null,
+		photoAlt: '',
 		bio: 'Tyson has played violin and piano since childhood, including orchestra and chamber music at Caltech. He is president of the California Youth Symphony board and co-founded the World Cube Association—proof that precision travels well between worlds.',
 		source: 'https://www.cys.org/about/board.html',
 	},
@@ -30,6 +38,8 @@ const members = [
 		name: 'Stephanie Wu',
 		initials: 'SW',
 		label: 'Lumon Quartet',
+		photo: stephanieWuPhoto,
+		photoAlt: 'Stephanie Wu seated outdoors with her cello',
 		bio: 'A cellist praised for her singing tone and perceptive musicianship, Stephanie performs throughout the Bay Area and serves as Assistant Principal Cellist of Berkeley Symphony. She studied at Harvard and the Royal Northern College of Music.',
 		source: 'https://stephaniewu.my.canva.site/',
 	},
@@ -139,10 +149,16 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 				<div class="member-grid">
 					{members.map((member, index) => (
 						<article class="member-card">
-							<div class="portrait" aria-label={`Photo placeholder for ${member.name}`}>
-								<span>{member.initials}</span>
-								<div class="portrait-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-								<small>Portrait<br />forthcoming</small>
+							<div class:list={['portrait', { 'has-photo': member.photo }]}>
+								{member.photo ? (
+									<Image class="member-photo" src={member.photo} alt={member.photoAlt} widths={[360, 600, 900]} sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 25vw" quality={82} loading="lazy" />
+								) : (
+									<>
+										<span>{member.initials}</span>
+										<div class="portrait-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+										<small>Portrait<br />forthcoming</small>
+									</>
+								)}
 							</div>
 							<div class="member-meta"><span>0{index + 1}</span><span>{member.label}</span></div>
 							<h3>{member.name}</h3>
@@ -256,6 +272,9 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 	.portrait{aspect-ratio:3/4;background:#d8d6cf;position:relative;overflow:hidden;margin-bottom:18px;display:grid;place-items:center}
 	.portrait::after{content:"";position:absolute;width:80%;aspect-ratio:1;border:1px solid rgba(21,23,22,.28);border-radius:50%}
 	.portrait>span{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(60px,7vw,110px);letter-spacing:-.07em;color:#b7b9b1}
+	.portrait.has-photo::after{display:none}
+	.member-photo{display:block;width:100%;height:100%;object-fit:cover}
+	.member-card:nth-child(4) .member-photo{object-position:center 35%}
 	.portrait small{position:absolute;bottom:14px;left:14px;font:9px/1.3 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
 	.portrait-lines{position:absolute;inset:8% 12%;display:flex;justify-content:space-around;transform:rotate(18deg)}
 	.portrait-lines i{width:1px;background:rgba(21,23,22,.18)}
