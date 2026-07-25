@@ -47,7 +47,7 @@ const members = [
 	},
 ];
 
-const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
+const socialImage = new URL('/og.png', Astro.site);
 ---
 
 <!doctype html>
@@ -62,10 +62,19 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://lumon-quartet.leyanlo.com" />
 		<meta property="og:image" content={socialImage} />
-		<meta property="og:image:alt" content="Lumon Quartet together after a performance" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Lumon Quartet cello-lightbulb logo with the words Four lives outside music. Four lives within it." />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Lumon Quartet" />
+		<meta name="twitter:description" content="Four lives outside music. Four lives within it." />
+		<meta name="twitter:image" content={socialImage} />
+		<meta name="twitter:image:alt" content="Lumon Quartet cello-lightbulb logo" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Lumon Quartet — Bay Area String Quartet</title>
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap" rel="stylesheet" />
@@ -73,7 +82,7 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 	<body>
 		<header class="nav shell">
 			<a class="wordmark" href="#top" aria-label="Lumon Quartet, home">
-				<span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+				<img class="logo-mark" src="/brand/lumon-logo.png" alt="" width="800" height="800" />
 				Lumon Quartet
 			</a>
 			<nav aria-label="Main navigation">
@@ -204,7 +213,7 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 		</main>
 
 		<footer class="shell">
-			<a class="wordmark" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Lumon Quartet</a>
+			<a class="wordmark" href="#top"><img class="logo-mark" src="/brand/lumon-logo.png" alt="" width="800" height="800" loading="lazy" />Lumon Quartet</a>
 			<p>San Francisco Bay Area</p>
 			<p>© {new Date().getFullYear()} Lumon Quartet</p>
 		</footer>
@@ -221,9 +230,7 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 	.shell{width:min(1380px,calc(100% - 64px));margin-inline:auto}
 	.nav{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:absolute;z-index:10;left:50%;transform:translateX(-50%);color:var(--paper)}
 	.wordmark{display:flex;align-items:center;gap:13px;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase}
-	.mark{display:flex;gap:3px;align-items:center;height:25px}
-	.mark i{display:block;width:2px;height:17px;background:currentColor}
-	.mark i:nth-child(2){height:24px}.mark i:nth-child(3){height:12px}.mark i:nth-child(4){height:20px}
+	.logo-mark{display:block;width:30px;height:42px;object-fit:contain;flex:0 0 auto}
 	nav{display:flex;align-items:center;gap:34px;font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
 	nav a{transition:opacity .2s}nav a:hover{opacity:.65}
 	.nav-cta{border:1px solid currentColor;border-radius:99px;padding:10px 18px}
