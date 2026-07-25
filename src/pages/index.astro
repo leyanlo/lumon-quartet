@@ -85,14 +85,16 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 		</header>
 
 		<main id="top">
-			<section class="hero shell" aria-labelledby="hero-title">
-				<div class="eyebrow"><span>Bay Area</span><span>Est. 2026</span></div>
-				<h1 id="hero-title"><span>Lumon</span><em>Quartet</em></h1>
-				<div class="hero-bottom">
-					<p>Four lives outside music.<br />Four lives within it.</p>
-					<a class="round-link" href="#story" aria-label="Discover our story"><span>Discover</span><b aria-hidden="true">↓</b></a>
+			<section class="hero" aria-labelledby="hero-title">
+				<div class="hero-inner shell">
+					<div class="eyebrow"><span>Bay Area</span><span>Est. 2026</span></div>
+					<h1 id="hero-title"><span>Lumon</span><em>Quartet</em></h1>
+					<div class="hero-bottom">
+						<p>Four lives outside music.<br />Four lives within it.</p>
+						<a class="round-link" href="#story" aria-label="Discover our story"><span>Discover</span><b aria-hidden="true">↓</b></a>
+					</div>
+					<div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 				</div>
-				<div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 			</section>
 
 			<section class="statement" id="story" aria-labelledby="story-title">
@@ -225,9 +227,10 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 	nav{display:flex;align-items:center;gap:34px;font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
 	nav a{transition:opacity .2s}nav a:hover{opacity:.65}
 	.nav-cta{border:1px solid currentColor;border-radius:99px;padding:10px 18px}
-	.hero{height:min(900px,100svh);min-height:700px;color:var(--paper);background:var(--ink);position:relative;padding:135px 0 46px;overflow:hidden}
+	.hero{height:min(900px,100svh);min-height:700px;color:var(--paper);background:var(--ink);position:relative;overflow:hidden}
 	.hero::before{content:"";position:absolute;inset:0 0 0 50%;background:radial-gradient(circle at 80% 50%,rgba(201,255,61,.14),transparent 38%),linear-gradient(90deg,transparent,rgba(240,238,231,.025));border-left:1px solid rgba(240,238,231,.12)}
 	.hero::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+	.hero-inner{height:100%;position:relative;padding:135px 0 46px}
 	.eyebrow{font-family:'DM Mono',monospace;text-transform:uppercase;font-size:10px;letter-spacing:.18em;display:flex;justify-content:space-between;width:50%;padding-right:30px;color:#adb0aa}
 	.hero h1{font-family:'Newsreader',serif;font-weight:300;line-height:.76;letter-spacing:-.07em;font-size:clamp(110px,18.2vw,280px);margin:16vh 0 0 -10px;position:relative;z-index:2}
 	.hero h1 span,.hero h1 em{display:block}.hero h1 em{font-weight:300;margin-left:25%;color:var(--acid)}
@@ -305,7 +308,7 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 	footer{border-top:1px solid var(--ink);padding:30px 0 45px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
 	footer p{margin:0}footer p:nth-child(2){text-align:center}footer p:last-child{text-align:right}
 	@media(max-width:900px){
-		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px;padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.media{padding:90px 0}.media-intro{grid-template-columns:1fr;margin-bottom:55px}.media-intro>.section-label{margin-bottom:30px}.media-intro>div:last-child>p{margin-left:0}.feature-photo img{height:75vw}.feature-photo figcaption{inset:auto 18px 16px}.media-grid{grid-template-columns:1fr}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
+		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px}.hero-inner{padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.media{padding:90px 0}.media-intro{grid-template-columns:1fr;margin-bottom:55px}.media-intro>.section-label{margin-bottom:30px}.media-intro>div:last-child>p{margin-left:0}.feature-photo img{height:75vw}.feature-photo figcaption{inset:auto 18px 16px}.media-grid{grid-template-columns:1fr}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
 	}
 	@media(max-width:560px){
 		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{width:70px;height:70px}.media h2{font-size:16vw}.feature-photo img{height:90vw}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.stanford-photo{margin-top:28px}.lobby-photo{width:100%;margin-top:65px}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/4.5}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
