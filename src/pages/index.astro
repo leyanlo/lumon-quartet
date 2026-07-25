@@ -1,6 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import backstagePhoto from '../assets/media/backstage.jpg';
 import groupSunsetPhoto from '../assets/media/group-sunset.jpg';
 import stanfordMedicinePhoto from '../assets/media/stanford-medicine.jpg';
 
@@ -113,25 +112,14 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 
 				<div class="shell media-grid">
 					<figure class="performance">
-						<div class="video-frame">
-							<video controls playsinline preload="metadata" poster="/media/lumon-performance-poster.jpg" aria-label="Lumon Quartet performing together">
-								<source src="/media/lumon-performance.mp4" type="video/mp4" />
-								Your browser does not support embedded video.
-							</video>
-						</div>
-						<figcaption><span>Inside the music</span><span>01:00</span></figcaption>
+						<img src="/media/lumon-performance-poster.jpg" alt="Lumon Quartet seated and performing together" width="1600" height="900" loading="lazy" />
+						<figcaption><span>Inside the music</span><span>In performance</span></figcaption>
 					</figure>
 
-					<div class="photo-pair">
-						<figure>
-							<Image src={backstagePhoto} alt="The four members of Lumon Quartet taking a candid photo beside music stands" widths={[420, 720, 1000]} sizes="(max-width: 900px) 50vw, 25vw" quality={80} loading="lazy" />
-							<figcaption><span>Between sets</span><span>Candid</span></figcaption>
-						</figure>
-						<figure>
-							<Image src={stanfordMedicinePhoto} alt="Lumon Quartet posing with their instruments at a Stanford Medicine concert" widths={[420, 720, 1000]} sizes="(max-width: 900px) 50vw, 25vw" quality={80} loading="lazy" />
-							<figcaption><span>Music in unexpected places</span><span>Stanford Medicine</span></figcaption>
-						</figure>
-					</div>
+					<figure class="stanford-photo">
+						<Image src={stanfordMedicinePhoto} alt="Lumon Quartet posing with their instruments at a Stanford Medicine concert" widths={[420, 720, 1000]} sizes="(max-width: 900px) 100vw, 33vw" quality={80} loading="lazy" />
+						<figcaption><span>Music in unexpected places</span><span>Stanford Medicine</span></figcaption>
+					</figure>
 				</div>
 			</section>
 
@@ -245,15 +233,12 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 	.feature-photo img{display:block;width:100%;height:min(75vw,860px);object-fit:cover;object-position:center 52%}
 	figcaption{display:flex;justify-content:space-between;gap:20px;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
 	.feature-photo figcaption{position:absolute;inset:auto 32px 25px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.6)}
-	.media-grid{display:grid;grid-template-columns:1.75fr 1fr;gap:18px;margin-top:18px;align-items:start}
-	.video-frame{background:#080908;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden}
-	.video-frame video{display:block;width:100%;height:100%;object-fit:contain}
-	.performance figcaption,.photo-pair figcaption{border-top:1px solid rgba(240,238,231,.22);padding-top:12px;margin-top:12px;color:#afb2ac}
-	.photo-pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-	.photo-pair img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover}
-	.photo-pair figure:first-child img{object-position:center 45%}
-	.photo-pair figcaption{flex-direction:column;gap:5px}
-	.photo-pair figcaption span:last-child{color:#747872}
+	.media-grid{display:grid;grid-template-columns:1.9fr 1fr;gap:clamp(18px,3vw,46px);margin-top:clamp(18px,3vw,46px);align-items:start}
+	.performance img,.stanford-photo img{display:block;width:100%;height:auto}
+	.performance figcaption,.stanford-photo figcaption{border-top:1px solid rgba(240,238,231,.22);padding-top:12px;margin-top:12px;color:#afb2ac}
+	.stanford-photo{margin-top:clamp(40px,8vw,120px)}
+	.stanford-photo figcaption{flex-direction:column;gap:5px}
+	.stanford-photo figcaption span:last-child{color:#747872}
 	.quartet{padding:145px 0 160px}
 	.section-head{display:grid;grid-template-columns:1fr 2fr 1fr;align-items:end;margin-bottom:85px}
 	.section-head>p{margin:0 0 5px;max-width:260px;color:#555a54;font-size:14px}
@@ -293,7 +278,7 @@ const socialImage = new URL(groupSunsetPhoto.src, Astro.site);
 		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px;padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.media{padding:90px 0}.media-intro{grid-template-columns:1fr;margin-bottom:55px}.media-intro>.section-label{margin-bottom:30px}.media-intro>div:last-child>p{margin-left:0}.feature-photo img{height:75vw}.feature-photo figcaption{inset:auto 18px 16px}.media-grid{grid-template-columns:1fr}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
 	}
 	@media(max-width:560px){
-		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{width:70px;height:70px}.media h2{font-size:16vw}.feature-photo img{height:90vw}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.photo-pair{grid-template-columns:1fr}.photo-pair img{aspect-ratio:4/5}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/4.5}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
+		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{width:70px;height:70px}.media h2{font-size:16vw}.feature-photo img{height:90vw}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.stanford-photo{margin-top:28px}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/4.5}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
 	}
 	@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker{animation:none}}
 </style>
