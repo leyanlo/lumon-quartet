@@ -1,17 +1,231 @@
 ---
-
+const members = [
+	{
+		name: 'Lynn Gerber',
+		initials: 'LG',
+		label: 'Violin',
+		bio: 'A Bay Area violinist and concertmaster of the Stanford Medicine Orchestra, Lynn grew up studying at the San Francisco Conservatory of Music and with Geoff Nuttall of the St. Lawrence String Quartet. Away from the stand, she is an anesthesiologist and clinical instructor.',
+		source: 'https://med.stanford.edu/medicineandthemuse/events/StanfordMedicineMusicNetwork/orchestra.html',
+	},
+	{
+		name: 'Leyan Lo',
+		initials: 'LL',
+		label: 'Violin',
+		bio: 'An avid chamber musician, Leyan has performed with friends across the Bay Area and at the St. Lawrence String Quartet Chamber Music Seminar. His other life is spent building technology—and occasionally solving a Rubik’s Cube very quickly.',
+		source: 'https://www.leyanlo.com/violin/',
+	},
+	{
+		name: 'Tyson Mao',
+		initials: 'TM',
+		label: 'Violin',
+		bio: 'Tyson has played violin and piano since childhood, including orchestra and chamber music at Caltech. He is president of the California Youth Symphony board and co-founded the World Cube Association—proof that precision travels well between worlds.',
+		source: 'https://www.cys.org/about/board.html',
+	},
+	{
+		name: 'Stephanie Wu',
+		initials: 'SW',
+		label: 'Cello',
+		bio: 'A cellist praised for her singing tone and perceptive musicianship, Stephanie performs throughout the Bay Area and serves as Assistant Principal Cellist of Berkeley Symphony. She studied at Harvard and the Royal Northern College of Music.',
+		source: 'https://stephaniewu.my.canva.site/',
+	},
+];
 ---
 
+<!doctype html>
 <html lang="en">
 	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="Lumon Quartet is a Bay Area string quartet exploring the lives we live in music—and everywhere else." />
+		<meta name="theme-color" content="#151716" />
+		<meta property="og:title" content="Lumon Quartet" />
+		<meta property="og:description" content="Four lives outside music. Four lives within it." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://lumon-quartet.leyanlo.com" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Lumon Quartet — Bay Area String Quartet</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;1,6..72,300&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<header class="nav shell">
+			<a class="wordmark" href="#top" aria-label="Lumon Quartet, home">
+				<span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+				Lumon Quartet
+			</a>
+			<nav aria-label="Main navigation">
+				<a href="#story">Story</a>
+				<a href="#quartet">Quartet</a>
+				<a class="nav-cta" href="#contact">Contact</a>
+			</nav>
+		</header>
+
+		<main id="top">
+			<section class="hero shell" aria-labelledby="hero-title">
+				<div class="eyebrow"><span>Bay Area</span><span>Est. 2026</span></div>
+				<h1 id="hero-title"><span>Lumon</span><em>Quartet</em></h1>
+				<div class="hero-bottom">
+					<p>Four lives outside music.<br />Four lives within it.</p>
+					<a class="round-link" href="#story" aria-label="Discover our story"><span>Discover</span><b aria-hidden="true">↓</b></a>
+				</div>
+				<div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+			</section>
+
+			<section class="statement" id="story" aria-labelledby="story-title">
+				<div class="shell statement-grid">
+					<div class="section-label"><span>01</span><span>Our story</span></div>
+					<div>
+						<h2 id="story-title">The other side<br />of the <em>self.</em></h2>
+						<div class="story-copy">
+							<p>By day, we move through medicine, technology, education, family, and all the ordinary complexity of life. Then we pick up our instruments, listen closely, and become something else together.</p>
+							<p>Our name is a wry nod to <i>Severance</i> and its fictional Lumon Industries. We don’t believe the two halves of a life can truly be severed. The person outside the rehearsal room shapes every phrase inside it—and the music follows us back out.</p>
+						</div>
+					</div>
+				</div>
+				<div class="ticker" aria-hidden="true"><span>Inner life / Outer life / One sound /&nbsp;</span><span>Inner life / Outer life / One sound /&nbsp;</span></div>
+			</section>
+
+			<section class="quartet shell" id="quartet" aria-labelledby="quartet-title">
+				<div class="section-head">
+					<div class="section-label dark"><span>02</span><span>The quartet</span></div>
+					<h2 id="quartet-title">Meet the<br /><em>four.</em></h2>
+					<p>Friends, collaborators, and musicians with plenty going on after rehearsal.</p>
+				</div>
+
+				<div class="member-grid">
+					{members.map((member, index) => (
+						<article class="member-card">
+							<div class="portrait" aria-label={`Photo placeholder for ${member.name}`}>
+								<span>{member.initials}</span>
+								<div class="portrait-lines" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+								<small>Portrait<br />forthcoming</small>
+							</div>
+							<div class="member-meta"><span>0{index + 1}</span><span>{member.label}</span></div>
+							<h3>{member.name}</h3>
+							<p>{member.bio}</p>
+							<a href={member.source} target="_blank" rel="noreferrer">Public profile <span aria-hidden="true">↗</span></a>
+						</article>
+					))}
+				</div>
+			</section>
+
+			<section class="interlude" aria-label="Lumon Quartet philosophy">
+				<div class="shell">
+					<p class="section-label"><span>03</span><span>What we play</span></p>
+					<blockquote>“Music begins where<br />the <em>day job</em> ends.”</blockquote>
+					<div class="interlude-note">
+						<span>Classical repertoire</span><span>Curious programming</span><span>Chamber music among friends</span>
+					</div>
+				</div>
+			</section>
+
+			<section class="contact shell" id="contact" aria-labelledby="contact-title">
+				<div class="section-label dark"><span>04</span><span>Get in touch</span></div>
+				<div class="contact-grid">
+					<div>
+						<h2 id="contact-title">Let’s make<br />something <em>resonate.</em></h2>
+						<p>For performances, collaborations, or a friendly hello, send us a note.</p>
+					</div>
+					<form name="contact" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
+						<input type="hidden" name="form-name" value="contact" />
+						<p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+						<label>Name<input type="text" name="name" autocomplete="name" required /></label>
+						<label>Email<input type="email" name="email" autocomplete="email" required /></label>
+						<label>Message<textarea name="message" rows="4" required></textarea></label>
+						<button type="submit">Send a note <span aria-hidden="true">↗</span></button>
+					</form>
+				</div>
+			</section>
+		</main>
+
+		<footer class="shell">
+			<a class="wordmark" href="#top"><span class="mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Lumon Quartet</a>
+			<p>San Francisco Bay Area</p>
+			<p>© {new Date().getFullYear()} Lumon Quartet</p>
+		</footer>
 	</body>
 </html>
+
+<style is:global>
+	:root{--ink:#151716;--paper:#f0eee7;--acid:#c9ff3d;--muted:#878b83;--line:rgba(21,23,22,.2)}
+	*{box-sizing:border-box}
+	html{scroll-behavior:smooth;background:var(--paper)}
+	body{margin:0;color:var(--ink);background:var(--paper);font-family:'Manrope',sans-serif;font-size:16px;line-height:1.55;overflow-x:hidden}
+	a{color:inherit;text-decoration:none}
+	button,input,textarea{font:inherit}
+	.shell{width:min(1380px,calc(100% - 64px));margin-inline:auto}
+	.nav{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);position:absolute;z-index:10;left:50%;transform:translateX(-50%);color:var(--paper)}
+	.wordmark{display:flex;align-items:center;gap:13px;font-size:14px;font-weight:600;letter-spacing:.03em;text-transform:uppercase}
+	.mark{display:flex;gap:3px;align-items:center;height:25px}
+	.mark i{display:block;width:2px;height:17px;background:currentColor}
+	.mark i:nth-child(2){height:24px}.mark i:nth-child(3){height:12px}.mark i:nth-child(4){height:20px}
+	nav{display:flex;align-items:center;gap:34px;font-family:'DM Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em}
+	nav a{transition:opacity .2s}nav a:hover{opacity:.65}
+	.nav-cta{border:1px solid currentColor;border-radius:99px;padding:10px 18px}
+	.hero{height:min(900px,100svh);min-height:700px;color:var(--paper);background:var(--ink);position:relative;padding:135px 0 46px;overflow:hidden}
+	.hero::before{content:"";position:absolute;inset:0 0 0 50%;background:radial-gradient(circle at 80% 50%,rgba(201,255,61,.14),transparent 38%),linear-gradient(90deg,transparent,rgba(240,238,231,.025));border-left:1px solid rgba(240,238,231,.12)}
+	.hero::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+	.eyebrow{font-family:'DM Mono',monospace;text-transform:uppercase;font-size:10px;letter-spacing:.18em;display:flex;justify-content:space-between;width:50%;padding-right:30px;color:#adb0aa}
+	.hero h1{font-family:'Newsreader',serif;font-weight:300;line-height:.76;letter-spacing:-.07em;font-size:clamp(110px,18.2vw,280px);margin:16vh 0 0 -10px;position:relative;z-index:2}
+	.hero h1 span,.hero h1 em{display:block}.hero h1 em{font-weight:300;margin-left:25%;color:var(--acid)}
+	.hero-bottom{position:absolute;bottom:45px;left:0;right:0;padding:0 6px;display:flex;align-items:end;justify-content:space-between;z-index:3}
+	.hero-bottom p{margin:0;font-size:17px;line-height:1.45}
+	.round-link{width:86px;height:86px;border:1px solid rgba(240,238,231,.5);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;transition:.25s}
+	.round-link:hover{background:var(--acid);border-color:var(--acid);color:var(--ink)}
+	.round-link b{font-size:17px;font-weight:400}
+	.strings{position:absolute;inset:0 9% 0 auto;width:28%;display:flex;justify-content:space-between;opacity:.18;transform:skewX(-5deg)}
+	.strings i{width:1px;background:linear-gradient(transparent,#fff 20%,#fff 80%,transparent)}
+	.statement{background:var(--acid);padding:140px 0 0;overflow:hidden}
+	.statement-grid{display:grid;grid-template-columns:1fr 3fr;gap:30px}
+	.section-label{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;display:flex;gap:18px;margin:0}.section-label span:first-child{opacity:.5}
+	.statement h2,.quartet h2,.contact h2{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(62px,8vw,120px);letter-spacing:-.055em;line-height:.87;margin:0}
+	.statement h2 em,.quartet h2 em,.contact h2 em{font-weight:300}
+	.story-copy{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin:75px 0 110px;padding-left:25%}
+	.story-copy p{margin:0;font-size:18px;max-width:440px}
+	.ticker{border-top:1px solid rgba(21,23,22,.25);white-space:nowrap;font-family:'Newsreader',serif;font-size:100px;line-height:1.1;font-style:italic;letter-spacing:-.04em;display:flex;width:max-content;animation:marquee 22s linear infinite}
+	@keyframes marquee{to{transform:translateX(-50%)}}
+	.quartet{padding:145px 0 160px}
+	.section-head{display:grid;grid-template-columns:1fr 2fr 1fr;align-items:end;margin-bottom:85px}
+	.section-head>p{margin:0 0 5px;max-width:260px;color:#555a54;font-size:14px}
+	.member-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+	.member-card{border-top:1px solid var(--ink);padding-top:14px;display:flex;flex-direction:column}
+	.portrait{aspect-ratio:3/4;background:#d8d6cf;position:relative;overflow:hidden;margin-bottom:18px;display:grid;place-items:center}
+	.portrait::after{content:"";position:absolute;width:80%;aspect-ratio:1;border:1px solid rgba(21,23,22,.28);border-radius:50%}
+	.portrait>span{font-family:'Newsreader',serif;font-style:italic;font-size:clamp(60px,7vw,110px);letter-spacing:-.07em;color:#b7b9b1}
+	.portrait small{position:absolute;bottom:14px;left:14px;font:9px/1.3 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
+	.portrait-lines{position:absolute;inset:8% 12%;display:flex;justify-content:space-around;transform:rotate(18deg)}
+	.portrait-lines i{width:1px;background:rgba(21,23,22,.18)}
+	.member-card:nth-child(even) .portrait{background:var(--ink);color:var(--paper)}
+	.member-card:nth-child(even) .portrait>span{color:#424642}.member-card:nth-child(even) .portrait::after{border-color:rgba(240,238,231,.2)}.member-card:nth-child(even) .portrait-lines i{background:rgba(240,238,231,.14)}
+	.member-meta{display:flex;justify-content:space-between;font:9px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#747870}
+	.member-card h3{font-family:'Newsreader',serif;font-weight:300;font-size:38px;line-height:1;margin:18px 0 17px;letter-spacing:-.035em}
+	.member-card p{font-size:13px;color:#555a54;margin:0 0 23px;line-height:1.65}
+	.member-card>a{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid var(--line);padding-bottom:9px;margin-top:auto;display:flex;justify-content:space-between}
+	.interlude{background:var(--ink);color:var(--paper);padding:130px 0 70px;position:relative;overflow:hidden}
+	.interlude::before{content:"L";font-family:'Newsreader',serif;font-size:700px;line-height:.6;color:transparent;-webkit-text-stroke:1px rgba(240,238,231,.1);position:absolute;right:-35px;bottom:-20px}
+	.interlude blockquote{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(58px,9vw,132px);line-height:.9;letter-spacing:-.055em;margin:115px 0 120px;position:relative}
+	.interlude blockquote em{color:var(--acid);font-weight:300}
+	.interlude-note{display:flex;gap:35px;border-top:1px solid rgba(240,238,231,.18);padding-top:18px;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;color:#aaa}
+	.contact{padding:145px 0 120px}
+	.contact-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:12%;margin-top:80px}
+	.contact h2{font-size:clamp(62px,7vw,110px)}
+	.contact h2 em{color:#747870}.contact-grid>div>p{max-width:390px;margin:40px 0 0;color:#555a54}
+	form{display:flex;flex-direction:column;gap:22px;padding-top:10px}
+	form label{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.14em;color:#656961}
+	input,textarea{width:100%;display:block;background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:10px 0;color:var(--ink);outline:none;resize:vertical}
+	input:focus,textarea:focus{border-color:#659300;box-shadow:0 1px #659300}
+	button{border:0;border-radius:0;background:var(--acid);padding:18px 20px;display:flex;justify-content:space-between;text-transform:uppercase;font:11px 'DM Mono',monospace;letter-spacing:.12em;cursor:pointer;color:var(--ink);margin-top:8px;transition:.2s}
+	button:hover{background:var(--ink);color:var(--paper)}
+	.hidden{position:absolute;left:-9999px}
+	footer{border-top:1px solid var(--ink);padding:30px 0 45px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
+	footer p{margin:0}footer p:nth-child(2){text-align:center}footer p:last-child{text-align:right}
+	@media(max-width:900px){
+		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px;padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
+	}
+	@media(max-width:560px){
+		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{width:70px;height:70px}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/4.5}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
+	}
+	@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker{animation:none}}
+</style>
