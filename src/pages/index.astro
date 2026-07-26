@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import { ArrowDown, ArrowUpRight, Send } from '@lucide/astro';
 import groupSunsetPhoto from '../assets/media/group-sunset.jpg';
 import leyanLoPhoto from '../assets/media/leyan-lo.jpg';
 import lynnGerberPhoto from '../assets/media/lynn-gerber.jpg';
@@ -99,7 +100,10 @@ const socialImage = new URL('/og.png', Astro.site);
 					<h1 id="hero-title"><span>Lumon</span><em>Quartet</em></h1>
 					<div class="hero-bottom">
 						<p>Four lives outside music.<br />Four lives within it.</p>
-						<a class="round-link" href="#story" aria-label="Discover our story"><span>Discover</span><b aria-hidden="true">↓</b></a>
+						<a class="round-link" href="#story" aria-label="Discover our story">
+							<span>Discover</span>
+							<span class="icon-disc" aria-hidden="true"><ArrowDown size={17} strokeWidth={1.8} /></span>
+						</a>
 					</div>
 					<div class="strings" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
 				</div>
@@ -170,7 +174,7 @@ const socialImage = new URL('/og.png', Astro.site);
 							<div class="member-meta"><span>0{index + 1}</span><span>{member.label}</span></div>
 							<h3>{member.name}</h3>
 							<p>{member.bio}</p>
-							<a href={member.source} target="_blank" rel="noreferrer">Public profile <span aria-hidden="true">↗</span></a>
+							<a href={member.source} target="_blank" rel="noreferrer">Public profile <ArrowUpRight size={14} strokeWidth={1.6} aria-hidden="true" /></a>
 						</article>
 					))}
 				</div>
@@ -200,7 +204,7 @@ const socialImage = new URL('/og.png', Astro.site);
 						<label>Name<input type="text" name="name" autocomplete="name" required /></label>
 						<label>Email<input type="email" name="email" autocomplete="email" required /></label>
 						<label>Message<textarea name="message" rows="4" required></textarea></label>
-						<button type="submit">Send a note <span aria-hidden="true">↗</span></button>
+						<button type="submit">Send a note <Send size={16} strokeWidth={1.6} aria-hidden="true" /></button>
 					</form>
 				</div>
 			</section>
@@ -238,9 +242,11 @@ const socialImage = new URL('/og.png', Astro.site);
 	.hero h1 span,.hero h1 em{display:block}.hero h1 em{font-weight:300;margin-left:25%;color:var(--acid)}
 	.hero-bottom{position:absolute;bottom:45px;left:0;right:0;padding:0 6px;display:flex;align-items:end;justify-content:space-between;z-index:3}
 	.hero-bottom p{margin:0;font-size:17px;line-height:1.45}
-	.round-link{width:86px;height:86px;border:1px solid rgba(240,238,231,.5);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;font-family:'DM Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.12em;transition:.25s}
-	.round-link:hover{background:var(--acid);border-color:var(--acid);color:var(--ink)}
-	.round-link b{font-size:17px;font-weight:400}
+	.round-link{min-height:52px;padding:6px 7px 6px 18px;border:1px solid rgba(240,238,231,.5);border-radius:99px;display:flex;align-items:center;justify-content:center;gap:15px;background:rgba(240,238,231,.03);font-family:'DM Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;transition:background .25s,border-color .25s,color .25s}
+	.round-link:hover{background:var(--paper);border-color:var(--paper);color:var(--ink)}
+	.icon-disc{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--acid);color:var(--ink);transition:transform .25s}
+	.round-link:hover .icon-disc{transform:translateY(2px)}
+	.round-link svg,.member-card>a svg,button svg{display:block;flex:0 0 auto}
 	.strings{position:absolute;inset:0 9% 0 auto;width:28%;display:flex;justify-content:space-between;opacity:.18;transform:skewX(-5deg)}
 	.strings i{width:1px;background:linear-gradient(transparent,#fff 20%,#fff 80%,transparent)}
 	.statement{background:var(--acid);padding:140px 0 0;overflow:hidden}
@@ -287,7 +293,7 @@ const socialImage = new URL('/og.png', Astro.site);
 	.member-meta{display:flex;justify-content:space-between;font:9px 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:#747870}
 	.member-card h3{font-family:'Newsreader',serif;font-weight:300;font-size:38px;line-height:1;margin:18px 0 17px;letter-spacing:-.035em}
 	.member-card p{font-size:13px;color:#555a54;margin:0 0 23px;line-height:1.65}
-	.member-card>a{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid var(--line);padding-bottom:9px;margin-top:auto;display:flex;justify-content:space-between}
+	.member-card>a{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em;border-bottom:1px solid var(--line);padding-bottom:9px;margin-top:auto;display:flex;align-items:center;justify-content:space-between}
 	.interlude{background:var(--ink);color:var(--paper);padding:130px 0 70px;position:relative;overflow:hidden}
 	.interlude::before{content:"L";font-family:'Newsreader',serif;font-size:700px;line-height:.6;color:transparent;-webkit-text-stroke:1px rgba(240,238,231,.1);position:absolute;right:-35px;bottom:-20px}
 	.interlude blockquote{font-family:'Newsreader',serif;font-weight:300;font-size:clamp(58px,9vw,132px);line-height:.9;letter-spacing:-.055em;margin:115px 0 120px;position:relative}
@@ -301,7 +307,7 @@ const socialImage = new URL('/og.png', Astro.site);
 	form label{font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.14em;color:#656961}
 	input,textarea{width:100%;display:block;background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0;padding:10px 0;color:var(--ink);outline:none;resize:vertical}
 	input:focus,textarea:focus{border-color:#659300;box-shadow:0 1px #659300}
-	button{border:0;border-radius:0;background:var(--acid);padding:18px 20px;display:flex;justify-content:space-between;text-transform:uppercase;font:11px 'DM Mono',monospace;letter-spacing:.12em;cursor:pointer;color:var(--ink);margin-top:8px;transition:.2s}
+	button{border:0;border-radius:0;background:var(--acid);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;text-transform:uppercase;font:11px 'DM Mono',monospace;letter-spacing:.12em;cursor:pointer;color:var(--ink);margin-top:8px;transition:.2s}
 	button:hover{background:var(--ink);color:var(--paper)}
 	.hidden{position:absolute;left:-9999px}
 	footer{border-top:1px solid var(--ink);padding:30px 0 45px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
@@ -310,7 +316,7 @@ const socialImage = new URL('/og.png', Astro.site);
 		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px}.hero-inner{padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.media{padding:90px 0}.media-intro{grid-template-columns:1fr;margin-bottom:55px}.media-intro>.section-label{margin-bottom:30px}.media-intro>div:last-child>p{margin-left:0}.feature-photo img{height:75vw}.feature-photo figcaption{inset:auto 18px 16px}.media-grid{grid-template-columns:1fr}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
 	}
 	@media(max-width:560px){
-		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{width:70px;height:70px}.media h2{font-size:16vw}.feature-photo img{height:90vw}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.stanford-photo{margin-top:28px}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/4.5}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
+		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{min-height:48px;padding-left:15px;gap:12px}.icon-disc{width:34px;height:34px}.media h2{font-size:16vw}.feature-photo img{height:90vw}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.stanford-photo{margin-top:28px}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:4/4.5}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
 	}
 	@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker{animation:none}}
 </style>
