@@ -132,19 +132,19 @@ const socialImage = new URL('/og.png', Astro.site);
 					</div>
 				</div>
 
-				<figure class="feature-photo">
-					<Image src={groupSunsetPhoto} alt="Lumon Quartet standing with their instruments in front of a sunset after a performance" widths={[720, 1200, 1800, 2400]} sizes="100vw" quality={82} />
-					<figcaption><span>After the final note</span><span>California Youth Symphony</span></figcaption>
-				</figure>
+				<div class="gallery">
+					<figure class="feature-photo">
+						<Image src={groupSunsetPhoto} alt="Lumon Quartet standing with their instruments in front of a sunset after a performance" widths={[560, 900, 1200, 1800]} sizes="(max-width: 900px) calc(100vw - 36px), 67vw" quality={82} />
+						<figcaption><span>After the final note</span><span>California Youth Symphony</span></figcaption>
+					</figure>
 
-				<div class="shell media-grid">
 					<figure class="performance">
 						<img src="/media/lumon-performance-poster.jpg" alt="Lumon Quartet seated and performing together" width="1600" height="900" loading="lazy" />
 						<figcaption><span>Inside the music</span><span>In performance</span></figcaption>
 					</figure>
 
 					<figure class="stanford-photo">
-						<Image src={stanfordMedicinePhoto} alt="Lumon Quartet posing with their instruments at a Stanford Medicine concert" widths={[420, 720, 1000]} sizes="(max-width: 900px) 100vw, 33vw" quality={80} loading="lazy" />
+						<Image src={stanfordMedicinePhoto} alt="Lumon Quartet posing with their instruments at a Stanford Medicine concert" widths={[420, 720, 1000]} sizes="(max-width: 560px) calc(100vw - 36px), (max-width: 900px) 36vw, 24vw" quality={80} loading="lazy" />
 						<figcaption><span>Music in unexpected places</span><span>Stanford Medicine</span></figcaption>
 					</figure>
 				</div>
@@ -264,14 +264,15 @@ const socialImage = new URL('/og.png', Astro.site);
 	.media h2 em{font-weight:300;color:var(--acid)}
 	.media-intro>div:last-child>p{max-width:470px;margin:45px 0 0 33.33%;color:#b8bbb4;font-size:15px}
 	figure{margin:0}
-	.feature-photo{width:100%;position:relative}
-	.feature-photo img{display:block;width:100%;height:min(75vw,860px);object-fit:cover;object-position:center 52%}
+	.gallery{width:min(920px,66.666vw);margin-inline:auto;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:clamp(22px,2.6vw,42px);align-items:start}
+	.feature-photo{grid-column:1/-1;width:100%;position:relative}
+	.feature-photo img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;object-position:center 52%}
 	figcaption{display:flex;justify-content:space-between;gap:20px;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
 	.feature-photo figcaption{position:absolute;inset:auto 32px 25px;color:#fff;text-shadow:0 1px 12px rgba(0,0,0,.6)}
-	.media-grid{display:grid;grid-template-columns:1.9fr 1fr;gap:clamp(18px,3vw,46px);margin-top:clamp(18px,3vw,46px);align-items:start}
+	.performance{grid-column:1/span 5}
 	.performance img,.stanford-photo img{display:block;width:100%;height:auto}
 	.performance figcaption,.stanford-photo figcaption{border-top:1px solid rgba(240,238,231,.22);padding-top:12px;margin-top:12px;color:#afb2ac}
-	.stanford-photo{margin-top:clamp(40px,8vw,120px)}
+	.stanford-photo{grid-column:6/-1;margin-top:clamp(55px,8vw,115px)}
 	.stanford-photo figcaption{flex-direction:column;gap:5px}
 	.stanford-photo figcaption span:last-child{color:#747872}
 	.quartet{padding:145px 0 160px}
@@ -313,10 +314,10 @@ const socialImage = new URL('/og.png', Astro.site);
 	footer{border-top:1px solid var(--ink);padding:30px 0 45px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
 	footer p{margin:0}footer p:nth-child(2){text-align:center}footer p:last-child{text-align:right}
 	@media(max-width:900px){
-		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px}.hero-inner{padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.media{padding:90px 0}.media-intro{grid-template-columns:1fr;margin-bottom:55px}.media-intro>.section-label{margin-bottom:30px}.media-intro>div:last-child>p{margin-left:0}.feature-photo img{height:75vw}.feature-photo figcaption{inset:auto 18px 16px}.media-grid{grid-template-columns:1fr}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
+		.shell{width:min(100% - 36px,1380px)}.nav{height:72px}.nav nav a:not(.nav-cta){display:none}.hero{min-height:650px}.hero-inner{padding-top:115px}.eyebrow{width:100%}.hero h1{font-size:clamp(92px,24vw,170px);margin-top:22vh}.hero h1 em{margin-left:8%}.strings{right:5%;width:45%}.statement{padding-top:90px}.statement-grid{grid-template-columns:1fr}.statement-grid>.section-label{margin-bottom:55px}.story-copy{padding:0;grid-template-columns:1fr;margin:55px 0 80px}.ticker{font-size:68px}.media{padding:90px 0}.media-intro{grid-template-columns:1fr;margin-bottom:55px}.media-intro>.section-label{margin-bottom:30px}.media-intro>div:last-child>p{margin-left:0}.gallery{width:calc(100% - 36px)}.feature-photo figcaption{inset:auto 18px 16px}.quartet{padding:90px 0}.section-head{grid-template-columns:1fr;margin-bottom:60px}.section-head h2{margin:45px 0 30px}.member-grid{grid-template-columns:1fr 1fr;gap:50px 16px}.interlude{padding-top:90px}.interlude blockquote{margin:90px 0}.contact{padding:90px 0}.contact-grid{grid-template-columns:1fr;gap:70px;margin-top:55px}
 	}
 	@media(max-width:560px){
-		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{min-height:48px;padding-left:15px;gap:12px}.icon-disc{width:34px;height:34px}.media h2{font-size:16vw}.feature-photo img{height:100vw;object-position:center 52%}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.stanford-photo{margin-top:28px}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:1}.member-card:nth-child(1) .member-photo{object-position:center 50%}.member-card:nth-child(2) .member-photo{object-position:center 42%}.member-card:nth-child(3) .member-photo{object-position:center 42%}.member-card:nth-child(4) .member-photo{object-position:center 32%}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
+		.nav-cta{padding:8px 13px}.hero{height:100svh}.hero h1{font-size:23vw;margin-top:24vh}.hero-bottom p{font-size:14px}.round-link{min-height:48px;padding-left:15px;gap:12px}.icon-disc{width:34px;height:34px}.media h2{font-size:16vw}.gallery{grid-template-columns:1fr;gap:42px}.feature-photo,.performance,.stanford-photo{grid-column:1;margin:0}.feature-photo img{height:auto;aspect-ratio:1;object-position:center 52%}.feature-photo figcaption{align-items:flex-end}.feature-photo figcaption span:last-child{text-align:right}.member-grid{grid-template-columns:1fr}.portrait{aspect-ratio:1}.member-card:nth-child(1) .member-photo{object-position:center 50%}.member-card:nth-child(2) .member-photo{object-position:center 42%}.member-card:nth-child(3) .member-photo{object-position:center 42%}.member-card:nth-child(4) .member-photo{object-position:center 32%}.member-card h3{font-size:34px}.member-card p{font-size:14px}.interlude-note{flex-direction:column;gap:12px}.interlude::before{font-size:500px}.contact h2{font-size:16vw}footer{grid-template-columns:1fr;gap:18px}footer p:nth-child(2),footer p:last-child{text-align:left}
 	}
 	@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.ticker{animation:none}}
 </style>
