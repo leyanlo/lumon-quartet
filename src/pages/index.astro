@@ -1,9 +1,11 @@
 ---
 import { Image } from 'astro:assets';
 import { ArrowDown, ArrowUpRight, Send } from '@lucide/astro';
+import logoMark from '../assets/brand/lumon-logo-mark.png';
 import groupSunsetPhoto from '../assets/media/group-sunset.jpg';
 import leyanLoPhoto from '../assets/media/leyan-lo.jpg';
 import lynnGerberPhoto from '../assets/media/lynn-gerber.jpg';
+import performancePhoto from '../assets/media/lumon-performance-poster.jpg';
 import stanfordMedicinePhoto from '../assets/media/stanford-medicine.jpg';
 import stephanieWuPhoto from '../assets/media/stephanie-wu.jpg';
 import tysonMaoPhoto from '../assets/media/tyson-mao.png';
@@ -82,7 +84,7 @@ const socialImage = new URL('/og.png', Astro.site);
 	<body>
 		<header class="nav shell">
 			<a class="wordmark" href="#top" aria-label="Lumon Quartet, home">
-				<img class="logo-mark" src="/brand/lumon-logo-mark.png" alt="" width="294" height="760" />
+				<Image class="logo-mark" src={logoMark} alt="" widths={[44, 88]} sizes="22px" quality={90} />
 				Lumon Quartet
 			</a>
 			<nav aria-label="Main navigation">
@@ -139,7 +141,7 @@ const socialImage = new URL('/og.png', Astro.site);
 					</figure>
 
 					<figure class="performance">
-						<img src="/media/lumon-performance-poster.jpg" alt="Lumon Quartet seated and performing together" width="1600" height="900" loading="lazy" />
+						<Image src={performancePhoto} alt="Lumon Quartet seated and performing together" widths={[560, 900, 1200, 1600]} sizes="(max-width: 560px) calc(100vw - 36px), (max-width: 900px) 60vw, 42vw" quality={82} loading="lazy" />
 						<figcaption><span>Inside the music</span><span>In performance</span></figcaption>
 					</figure>
 
@@ -211,7 +213,7 @@ const socialImage = new URL('/og.png', Astro.site);
 		</main>
 
 		<footer class="shell">
-			<a class="wordmark" href="#top"><img class="logo-mark" src="/brand/lumon-logo-mark.png" alt="" width="294" height="760" loading="lazy" />Lumon Quartet</a>
+			<a class="wordmark" href="#top"><Image class="logo-mark" src={logoMark} alt="" widths={[44, 88]} sizes="22px" quality={90} loading="lazy" />Lumon Quartet</a>
 			<p>San Francisco Bay Area</p>
 			<p>© {new Date().getFullYear()} Lumon Quartet</p>
 		</footer>
