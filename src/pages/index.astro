@@ -203,6 +203,7 @@ const socialImage = new URL('/og.png', Astro.site);
 						<input type="hidden" name="form-name" value="contact" />
 						<input type="hidden" name="subject" value="New Lumon Quartet inquiry from %{formName}" />
 						<p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
+						<p class="form-success" role="status" tabindex="-1" hidden><strong>Message sent.</strong> Thanks for reaching out—we’ll be in touch soon.</p>
 						<label>Name<input type="text" name="name" autocomplete="name" required /></label>
 						<label>Email<input type="email" name="email" autocomplete="email" required /></label>
 						<label>Message<textarea name="message" rows="4" required></textarea></label>
@@ -217,6 +218,18 @@ const socialImage = new URL('/og.png', Astro.site);
 			<p>San Francisco Bay Area</p>
 			<p>© {new Date().getFullYear()} Lumon Quartet</p>
 		</footer>
+
+		<script>
+			const url = new URL(window.location.href);
+			if (url.searchParams.get('message') === 'sent') {
+				const confirmation = document.querySelector<HTMLElement>('.form-success');
+				if (confirmation) {
+					confirmation.hidden = false;
+					confirmation.focus({ preventScroll: true });
+				}
+				history.replaceState({}, '', `${url.pathname}${url.hash}`);
+			}
+		</script>
 	</body>
 </html>
 
@@ -312,6 +325,8 @@ const socialImage = new URL('/og.png', Astro.site);
 	input:focus,textarea:focus{border-color:#659300;box-shadow:0 1px #659300}
 	button{border:0;border-radius:0;background:var(--acid);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;text-transform:uppercase;font:11px 'DM Mono',monospace;letter-spacing:.12em;cursor:pointer;color:var(--ink);margin-top:8px;transition:.2s}
 	button:hover{background:var(--ink);color:var(--paper)}
+	.form-success{margin:0;border:1px solid var(--ink);background:var(--acid);padding:14px 16px;color:var(--ink);font-size:13px;outline:none}
+	.form-success strong{display:block;margin-bottom:3px;font:500 10px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.12em}
 	.hidden{position:absolute;left:-9999px}
 	footer{border-top:1px solid var(--ink);padding:30px 0 45px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;font:9px 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.1em}
 	footer p{margin:0}footer p:nth-child(2){text-align:center}footer p:last-child{text-align:right}
