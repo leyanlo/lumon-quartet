@@ -199,11 +199,12 @@ const socialImage = new URL('/og.png', Astro.site);
 						<h2 id="contact-title">Let’s make<br />something <em>resonate.</em></h2>
 						<p>For performances, collaborations, or a friendly hello, send us a note.</p>
 					</div>
-					<form name="contact" method="POST" action="/success" data-netlify="true" netlify-honeypot="bot-field">
+					<form name="contact" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
 						<input type="hidden" name="form-name" value="contact" />
 						<input type="hidden" name="subject" value="New Lumon Quartet inquiry from %{formName}" />
 						<p class="hidden"><label>Don’t fill this out: <input name="bot-field" /></label></p>
 						<p class="form-success" role="status" tabindex="-1" hidden><strong>Message sent.</strong> Thanks for reaching out—we’ll be in touch soon.</p>
+						<p class="form-error" role="alert" tabindex="-1" hidden>We couldn’t send your message. Please try again.</p>
 						<label>Name<input type="text" name="name" autocomplete="name" required /></label>
 						<label>Email<input type="email" name="email" autocomplete="email" required /></label>
 						<label>Message<textarea name="message" rows="4" required></textarea></label>
@@ -220,14 +221,41 @@ const socialImage = new URL('/og.png', Astro.site);
 		</footer>
 
 		<script>
-			const url = new URL(window.location.href);
-			if (url.searchParams.get('message') === 'sent') {
-				const confirmation = document.querySelector<HTMLElement>('.form-success');
-				if (confirmation) {
-					confirmation.hidden = false;
-					confirmation.focus({ preventScroll: true });
-				}
-				history.replaceState({}, '', `${url.pathname}${url.hash}`);
+			const form = document.querySelector<HTMLFormElement>('form[name="contact"]');
+			const confirmation = document.querySelector<HTMLElement>('.form-success');
+			const error = document.querySelector<HTMLElement>('.form-error');
+			const button = form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+			if (form && confirmation && error && button) {
+				form.addEventListener('submit', async (event) => {
+					event.preventDefault();
+					if (button.disabled) return;
+					confirmation.hidden = true;
+					error.hidden = true;
+					button.disabled = true;
+					form.setAttribute('aria-busy', 'true');
+					try {
+						const body = new URLSearchParams();
+						new FormData(form).forEach((value, key) => body.append(key, String(value)));
+						// Redirects run before Netlify Forms, so POST to the static home page.
+						const response = await fetch(form.action, {
+							method: 'POST',
+							headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+							body: body.toString(),
+							redirect: 'error',
+							signal: AbortSignal.timeout(30000),
+						});
+						if (!response.ok) throw new Error('Submission failed');
+						form.reset();
+						confirmation.hidden = false;
+						confirmation.focus({ preventScroll: true });
+					} catch {
+						error.hidden = false;
+						error.focus({ preventScroll: true });
+					} finally {
+						button.disabled = false;
+						form.removeAttribute('aria-busy');
+					}
+				});
 			}
 		</script>
 	</body>
